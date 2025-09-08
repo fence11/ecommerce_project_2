@@ -18,8 +18,8 @@ export const Modal: React.FC<ModalProps> = ({
     description,
     isOpen,
     onClose,
-    onConfirm,
-    loading,
+    // onConfirm,
+    // loading,
     children
 }) => {
     const onChange = (open: boolean) =>{
