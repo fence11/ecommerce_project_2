@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { ModalProvider } from '@/providers/modal-provider'
+import { ToasterProvider } from '@/providers/toast-provider'
 import {
   ClerkProvider,
   SignInButton,
@@ -10,6 +11,7 @@ import {
 } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import prismadb from '@/lib/prismadb'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -49,6 +51,7 @@ export default function RootLayout({
             </SignedIn>
           </header>
           <ModalProvider />
+          <ToasterProvider />
           {children}
         </body>
       </html>
