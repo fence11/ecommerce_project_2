@@ -29,9 +29,9 @@ export default async function Dashboard({children, params}: DashboardType) {
 
     return (
         <>
-            <h1 className='text-red-500'>NAVBAR</h1>
-            {/* <Navbar/>
-            {children} */}
+            {/* <h1 className='text-red-500'>NAVBAR</h1> */}
+            <Navbar/>
+            {children}
         </>
     )
 }
