@@ -3,8 +3,14 @@
 import { cn } from "@/lib/utils"
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
+import StoreSwitcher from "./store-switcher";
+import { Store } from "@/lib/generated/prisma";
 
-export function MainNav({ className, ...props } : React.HTMLAttributes<HTMLElement>) {
+interface MainNavProps extends React.HTMLAttributes<HTMLElement> {
+    stores?: Store[];
+}
+
+export function MainNav({ className, stores = [], ...props } : MainNavProps) {
     const pathname = usePathname();
     const params = useParams();
 
@@ -41,12 +47,19 @@ export function MainNav({ className, ...props } : React.HTMLAttributes<HTMLEleme
         label: 'Settings',
         active: pathname === `/${params.storeId}/settings`
     }];
+    const isSettingsPage = pathname === `/${params.storeId}/settings`;
+
     return (
         <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)}>
            {routes.map((route, index) => (
-            <Link key={index} href={route.href} className={cn("text-sm font-medium transition-colors hover:text-primary", route.active ? "text-black dark:text-white" : "text-muted-foreground")}>
-                {route.label}
-            </Link>
+            <div key={index} className="flex items-center space-x-2">
+                <Link href={route.href} className={cn("text-sm font-medium transition-colors hover:text-primary", route.active ? "text-black dark:text-white" : "text-muted-foreground")}>
+                    {route.label}
+                </Link>
+                {route.active && isSettingsPage && stores.length > 0 && (
+                    <StoreSwitcher items={stores} className="ml-2" />
+                )}
+            </div>
            ))} 
         </nav>
     )

@@ -59,7 +59,7 @@ export const StoreModal = () => {
             onClose={storeModal.onClose}
         >
             <div>
-                <div className="py-2 pb-4 space-y-4">
+                <div className='py-2 pb-4 space-y-4'>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)}>
                             <FormField
@@ -71,7 +71,7 @@ export const StoreModal = () => {
                                         <FormControl>
                                             <Input
                                                 disabled={loading}
-                                                placeholder="E-commerce"
+                                                placeholder='E-commerce'
                                                 {...field}
                                             />
                                         </FormControl>
@@ -79,17 +79,12 @@ export const StoreModal = () => {
                                     </FormItem>
                                 )}
                             />
-                            <div className="flex items-center justify-end w-full pt-6 space-x-2">
+                            <div className='flex items-center justify-end w-full pt-6 space-x-2'>
                                 <Button
                                     disabled={loading}
                                     variant="outline"
-                                    onClick={storeModal.onClose}
-                                >
-                                    Cancel
-                                </Button>
-                                <Button disabled={loading} type="submit">
-                                    Continue
-                                </Button>
+                                    onClick={storeModal.onClose}>Cancel</Button>
+                                <Button disabled={loading} type='submit' >Continue</Button>
                             </div>
                         </form>
                     </Form>

@@ -24,11 +24,9 @@ import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "@/components/modals/alert-modal";
 import { ApiAlert } from "@/components/ui/api-alert";
 import { useOrigin } from "@/hooks/use-origin";
-import StoreSwitcher from "@/components/store-switcher";
 
 interface SettingsFromProps {
     initialData: Store;
-    stores: Store[];
 }
 
 const formSchema = z.object({
@@ -37,7 +35,7 @@ const formSchema = z.object({
 
 type SettingsFormValues = z.infer<typeof formSchema>;
 
-export const SettingsForm: React.FC<SettingsFromProps> = ({ initialData, stores }) => {
+export const SettingsForm: React.FC<SettingsFromProps> = ({ initialData }) => {
     const params = useParams();
     const router = useRouter();
     const origin = useOrigin();
@@ -88,7 +86,6 @@ export const SettingsForm: React.FC<SettingsFromProps> = ({ initialData, stores 
             />
             <div className="flex items-center justify-between">
                 <Heading title="Settings" description="Manage Store preferences" />
-                <StoreSwitcher items={stores}/>
                 <Button
                     variant="destructive"
                     size="sm"

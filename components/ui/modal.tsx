@@ -1,15 +1,12 @@
 "use client";
 
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
-import { DialogHeader } from "./dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogHeader } from "./dialog";
 
 interface ModalProps{
     title: string;
     description: string;
     isOpen: boolean;
     onClose: () => void;    
-    // onConfirm: () => void;
-    // loading: boolean;    
     children?: React.ReactNode;
 }
 
@@ -18,19 +15,17 @@ export const Modal: React.FC<ModalProps> = ({
     description,
     isOpen,
     onClose,
-    // onConfirm,
-    // loading,
     children
 }) => {
-    const onChange = (open: boolean) =>{
-        if(!open){
+    const onChange = (open: boolean) => {
+        if (!open) {
             onClose();
         }
     };
 
     return (
         <Dialog open={isOpen} onOpenChange={onChange}>
-            <DialogContent>
+            <DialogContent showCloseButton={false}>
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
                     <DialogDescription>
