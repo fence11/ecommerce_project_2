@@ -61,7 +61,7 @@ export const CategoryForm: React.FC<SettingsFromProps> = ({ initialData, billboa
             router.refresh();
             router.push(`/${params.storeId}/categories`);
             toast.success(toastMessage)
-        } catch(err) {
+        } catch (err) {
             toast.error("Something went wrong.");
         } finally {
             setLoading(false)
@@ -75,7 +75,7 @@ export const CategoryForm: React.FC<SettingsFromProps> = ({ initialData, billboa
             router.refresh();
             router.push(`/${params.storeId}/categories`)
             toast.success("Category deleted.")
-        } catch(err) {
+        } catch (err) {
             toast.error("Make sure you removed all products using this category first.");
         } finally {
             setLoading(false)
@@ -86,10 +86,10 @@ export const CategoryForm: React.FC<SettingsFromProps> = ({ initialData, billboa
     return (
         <>
             <AlertModal
-            isOpen={open}
-            onClose={() => setOpen(false)}
-            onConfirm={onDelete}
-            loading={loading}
+                isOpen={open}
+                onClose={() => setOpen(false)}
+                onConfirm={onDelete}
+                loading={loading}
             />
             <div className="flex items-center justify-between">
                 <Heading title={title} description={description} />
@@ -104,9 +104,9 @@ export const CategoryForm: React.FC<SettingsFromProps> = ({ initialData, billboa
                 <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-8">
                     <div className='grid grid-cols-3 gap-8'>
                         <FormField
-                            control={form.control} 
+                            control={form.control}
                             name="name"
-                            render={({field}) => (
+                            render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
@@ -117,9 +117,9 @@ export const CategoryForm: React.FC<SettingsFromProps> = ({ initialData, billboa
                             )}
                         />
                         <FormField
-                            control={form.control} 
+                            control={form.control}
                             name="billboardId"
-                            render={({field}) => (
+                            render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Billboard</FormLabel>
                                     <Select
