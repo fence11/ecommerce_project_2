@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///D:/E_HDD/__Practica_P2_Ecommerce_Nextjs/ecommerce_project_2/admin/app/%28root%29/%28routes%29/page.tsx"],"sourcesContent":["\"use client\"\r\n\r\nimport { useStoreModal } from '@/hooks/use-store-modal';\r\nimport { useEffect } from 'react' \r\n\r\nconst SetupPage = () => {\r\n\r\n  const onOpen =  useStoreModal(state => state.onOpen);\r\n  const isOpen =  useStoreModal(state => state.isOpen);\r\n\r\n  useEffect(() => {\r\n    if (!isOpen) {\r\n      onOpen();\r\n    }\r\n  }, [isOpen, onOpen]);\r\n\r\n  return null;\r\n}\r\n\r\nexport default SetupPage;"],"names":[],"mappings":";;;;AAEA;AACA;;AAHA;;;AAKA,MAAM,YAAY;;IAEhB,MAAM,SAAU,IAAA,mJAAa;2CAAC,CAAA,QAAS,MAAM,MAAM;;IACnD,MAAM,SAAU,IAAA,mJAAa;2CAAC,CAAA,QAAS,MAAM,MAAM;;IAEnD,IAAA,0KAAS;+BAAC;YACR,IAAI,CAAC,QAAQ;gBACX;YACF;QACF;8BAAG;QAAC;QAAQ;KAAO;IAEnB,OAAO;AACT;GAZM;;QAEY,mJAAa;QACb,mJAAa;;;KAHzB;uCAcS","debugId":null}}]
-}
