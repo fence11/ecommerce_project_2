@@ -6,33 +6,24 @@ import IconButton from "./icon-button";
 import Currency from "./currency";
 import { Expand, ShoppingCart } from "lucide-react";
 import { useRouter } from "next/navigation";
-// import { useRouter } from "next/navigation";
-// import PreviewModal from './../preview-modal';
-// import usePreviewModal from "@/hooks/use-preview-modal";
-// import { MouseEventHandler } from 'react';
-// import useCart from "@/hooks/use-cart";
+import { MouseEventHandler } from "react";
+import usePreviewModal from "@/hooks/use-preview-modal";
 
 interface ProductCard {
     data: Product;
 }
 
 const ProductCard: React.FC<ProductCard> = ({ data }) => {
-    // const cart = useCart();
-    // const previewModal = usePreviewModal();
+    const previewModal = usePreviewModal();
     const router = useRouter();
     const handleClick = () => {
         router.push(`/product/${data?.id}`)
     }
 
-    // const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
-    //     event.stopPropagation();
-    //     previewModal.onOpen(data);
-    // }
-
-    // const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
-    //     event.stopPropagation();
-    //     cart.addItem(data);
-    // }
+    const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
+        event.stopPropagation();
+        previewModal.onOpen(data);
+    }
 
     return ( 
         <div onClick={handleClick} className="p-3 space-y-4 bg-white border cursor-pointer group rounded-xl">
@@ -46,6 +37,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
                 <div className="absolute w-full px-6 transition opacity-0 group-hover:opacity-100 bottom-5">
                     <div className="flex justify-center gap-x-6">
                         <IconButton
+                            onClick={onPreview}
                             icon={<Expand size={20} className="text-gray-600" />}/>
                         <IconButton
                             icon={<ShoppingCart size={20} className="text-gray-600" />}/>
