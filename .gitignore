@@ -37,5 +37,12 @@ next-env.d.ts
 
 /lib/generated/prisma
 
+/admin/.env
+/admin/.env*.local
 /admin/node_modules
 /admin/.next
+
+/store/.env
+/store/.env*.local
+/store/node_modules
+/store/.next
