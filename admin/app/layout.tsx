@@ -4,6 +4,7 @@ import { ToasterProvider } from '@/providers/toast-provider'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import { ThemeProvider } from '@/providers/theme-provider'
 import prismadb from '@/lib/prismadb'
 
 const geistSans = Geist({
@@ -26,15 +27,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  
+
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          {/* Header controls moved into Navbar; keep global layout clean */}
-          <ModalProvider />
-          <ToasterProvider />
-          {children}
+          <ThemeProvider attribute="class" defaultTheme='system' enableSystem>
+            <ModalProvider />
+            <ToasterProvider />
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
