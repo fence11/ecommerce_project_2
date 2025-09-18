@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Color, Size } from '@/types'
 import Button from "@/components/ui/button";
 import { Plus, X } from "lucide-react";
@@ -14,9 +14,24 @@ interface MobileFiltersProps {
 }
 
 const MobileFilters: React.FC<MobileFiltersProps> = ({ sizes, colors }) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
+    
     const onOpen = () => setOpen(true);
     const onClose = () => setOpen(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) {
+        return (
+            <Button className="flex items-center gap-x-2 lg:hidden" onClick={onOpen}>
+                Filters
+                <Plus size={20} />
+            </Button>
+        );
+    }
 
     return (
         <>
