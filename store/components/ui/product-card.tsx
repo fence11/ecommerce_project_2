@@ -5,14 +5,37 @@ import Image from "next/image";
 import IconButton from "./icon-button";
 import Currency from "./currency";
 import { Expand, ShoppingCart } from "lucide-react";
+import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
+// import PreviewModal from './../preview-modal';
+// import usePreviewModal from "@/hooks/use-preview-modal";
+// import { MouseEventHandler } from 'react';
+// import useCart from "@/hooks/use-cart";
 
 interface ProductCard {
     data: Product;
 }
 
 const ProductCard: React.FC<ProductCard> = ({ data }) => {
+    // const cart = useCart();
+    // const previewModal = usePreviewModal();
+    const router = useRouter();
+    const handleClick = () => {
+        router.push(`/product/${data?.id}`)
+    }
+
+    // const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
+    //     event.stopPropagation();
+    //     previewModal.onOpen(data);
+    // }
+
+    // const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    //     event.stopPropagation();
+    //     cart.addItem(data);
+    // }
+
     return ( 
-        <div className="p-3 space-y-4 bg-white border cursor-pointer group rounded-xl">
+        <div onClick={handleClick} className="p-3 space-y-4 bg-white border cursor-pointer group rounded-xl">
             {/* Images and Actions */}
             <div className="relative bg-gray-100 aspect-square rounded-xl">
                 <Image
